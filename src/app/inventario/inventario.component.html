@@ -1,0 +1,36 @@
+<div class="card" *ngIf ="!productoSelecionado;">
+  <div class="card-body">
+    <h2 class="card-title">Inventario de Productos</h2>
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Marca</th>
+          <th>Cantidad Disponible</th>
+          <th>Categoría</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of arrayInventario" (click)="onDetalles(product);" [class.selected]="product === productoSelecionado">
+          <td>{{product.nombreProduct}}</td>
+          <td>{{product.marcaProduct}}</td>
+          <td >{{product.cantidadPoductDisponible}}</td>
+          <td>{{product.categoria}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div  *ngIf ="productoSelecionado;" class="card mt-5">
+    <div class="card-body"> 
+        <h1 class="card-title thead-dark text-center">Detalles de los productos</h1>
+        <div class="card-text">
+                <h4>Nombre: <span>{{productoSelecionado.nombreProduct}}</span></h4>
+                <h4>Marca: <span>{{productoSelecionado.marcaProduct}}</span></h4>
+                <h4>Categoria: <span>{{productoSelecionado.categoria}}</span></h4>
+                <h4>Cantidad disponible: <span>{{productoSelecionado.cantidadPoductDisponible}}</span>
+                  <button class="btn btn-success ml-5" (click)="restarCantidad();"> Reducir </button> <button class="btn btn-primary ml-5" (click)="offDetalles();"> Volver </button></h4>
+        </div>
+    </div>
+</div>
